@@ -21,9 +21,37 @@ export const fetchData = async () => {
   const apiParams = {
     filters: filters.join(";"),
     structure: JSON.stringify(structure),
-    // latestBy: "newCasesByPublishDate",
     format: "json",
   };
+
+  // TODO the vaccine params don't seem to work when passed as request params
+  // This URL provides the previous <2500 days of vaccine data
+  const hardCodedVaccineReq =
+    "https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure=%7B%22areaType%22:%22areaType%22,%22areaName%22:%22areaName%22,%22areaCode%22:%22areaCode%22,%22date%22:%22date%22,%22newPeopleVaccinatedFirstDoseByPublishDate%22:%22newPeopleVaccinatedFirstDoseByPublishDate%22,%22newPeopleVaccinatedSecondDoseByPublishDate%22:%22newPeopleVaccinatedSecondDoseByPublishDate%22,%22cumPeopleVaccinatedFirstDoseByPublishDate%22:%22cumPeopleVaccinatedFirstDoseByPublishDate%22,%22cumPeopleVaccinatedSecondDoseByPublishDate%22:%22cumPeopleVaccinatedSecondDoseByPublishDate%22%7D&format=json";
+
+  const vaccineResults = await axios
+    .get(hardCodedVaccineReq)
+    .then((response) => {
+      const todayData = response.data.data[0];
+      const prevData = response.data.data[1];
+      return {
+        vaccine1: {
+          daily: todayData.newPeopleVaccinatedFirstDoseByPublishDate,
+          total: todayData.cumPeopleVaccinatedFirstDoseByPublishDate,
+          increase:
+            todayData.newPeopleVaccinatedFirstDoseByPublishDate >
+            prevData.newPeopleVaccinatedFirstDoseByPublishDate,
+        },
+        vaccine2: {
+          daily: todayData.newPeopleVaccinatedSecondDoseByPublishDate,
+          total: todayData.cumPeopleVaccinatedSecondDoseByPublishDate,
+          increase:
+            todayData.newPeopleVaccinatedSecondDoseByPublishDate >
+            prevData.newPeopleVaccinatedSecondDoseByPublishDate,
+        },
+      };
+    })
+    .catch((e) => console.error(e));
 
   const results = await axios
     .get(baseURL, {
@@ -31,6 +59,7 @@ export const fetchData = async () => {
       timeout: 10000,
     })
     .then((response) => {
+      console.log(response.data);
       const data = response.data.data[0];
       const prevData = response.data.data[1];
 
@@ -46,19 +75,12 @@ export const fetchData = async () => {
           total: data.cumDeathsByDeathDate,
           increase: data.newDeathsByDeathDate > prevData.newDeathsByDeathDate,
         },
-        vaccine1: {
-          daily: null,
-          total: null,
-          increase: true,
-        },
-        vaccine2: {
-          daily: null,
-          total: null,
-          increase: true,
-        },
       };
     })
     .catch((e) => console.error(e));
 
-  return results;
+  return {
+    ...results,
+    ...vaccineResults,
+  };
 };
