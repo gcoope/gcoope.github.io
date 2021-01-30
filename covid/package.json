@@ -2,6 +2,7 @@
   "name": "covid",
   "version": "1.0.0",
   "description": "",
+  "homepage": "http://gcoope.github.io/covid",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
