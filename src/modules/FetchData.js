@@ -1,4 +1,5 @@
 import axios from "axios";
+import Parser from "rss-parser";
 
 export const fetchData = async () => {
   const baseURL = "https://api.coronavirus.data.gov.uk/v1/data";
@@ -59,7 +60,6 @@ export const fetchData = async () => {
       timeout: 10000,
     })
     .then((response) => {
-      console.log(response.data);
       const data = response.data.data[0];
       const prevData = response.data.data[1];
 
@@ -83,4 +83,26 @@ export const fetchData = async () => {
     ...results,
     ...vaccineResults,
   };
+};
+
+export const fetchNewsData = async () => {
+  const parser = new Parser();
+  const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+  const feed = await parser.parseURL(
+    CORS_PROXY + "http://feeds.bbci.co.uk/news/health/rss.xml?edition=uk"
+  );
+  const stories = [];
+  if (feed) {
+    feed.items.forEach((item) => {
+      const title = item.title.toLowerCase();
+      if (title.includes("covid") || title.includes("coronavirus")) {
+        stories.push({
+          title: item.title,
+          link: item.link,
+        });
+      }
+    });
+  }
+
+  return stories;
 };

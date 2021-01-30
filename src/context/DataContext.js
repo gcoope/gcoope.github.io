@@ -3,21 +3,22 @@ import React, { useState } from "react";
 const defaultData = {
   lastUpdated: undefined,
   positive: {
-    daily: 1234,
-    total: 12345,
+    daily: null,
+    total: null,
   },
   deaths: {
-    daily: 123,
-    total: 12345,
+    daily: null,
+    total: null,
   },
   vaccine1: {
-    daily: 222,
-    total: 12345,
+    daily: null,
+    total: null,
   },
   vaccine2: {
-    daily: 333,
-    total: 12345,
+    daily: null,
+    total: null,
   },
+  newsStories: [],
 };
 
 const DataContext = React.createContext();
