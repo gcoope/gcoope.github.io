@@ -1,0 +1,2 @@
+(this.webpackJsonpcovid=this.webpackJsonpcovid||[]).push([[0],{10:function(n,t,e){"use strict";e.r(t);var o=e(1),c=(e(0),e(3)),i=e.n(c),s=function(){return Object(o.jsx)("div",{children:"Coming soon..."})};e(9);i.a.render(Object(o.jsx)(s,{}),document.getElementById("root"))},9:function(n,t,e){}},[[10,1,2]]]);
+//# sourceMappingURL=main.8fb69860.chunk.js.map
