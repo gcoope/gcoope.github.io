@@ -1,12 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+$font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
 :root {
+  // Colours
   --c-theme-main: #4e77b3;
   --c-white: #ffffff;
+  --c-grey: #afafaf;
+  --c-positive: #008000;
+  --c-negative: #a02525;
+
+  // Layout
+  --s-1: 8px;
+  --s-2: calc(var(--s-1) * 2);
+  --s-3: calc(var(--s-1) * 3);
+  --s-4: calc(var(--s-1) * 4);
 }
 
 body {
   margin: 0;
   background: var(--c-white);
-  font-family: sans-serif;
+  font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
 }

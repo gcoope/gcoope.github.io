@@ -1,0 +1,22 @@
+.component {
+  display: flex;
+  margin: var(--s-2) 0;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.title {
+  flex: 2;
+  margin: var(--s-2) 0;
+}
+
+.date {
+  flex: 1;
+  text-align: right;
+  margin: auto 0;
+  color: var(--c-gray);
+  @media only screen and (max-width: 768px) {
+    text-align: left;
+  }
+}

@@ -1,0 +1,62 @@
+.component {
+  display: flex;
+
+  @media only screen and (max-width: 800px) {
+    flex-wrap: wrap;
+  }
+}
+
+.dataCard {
+  margin: var(--s-2);
+  flex-basis: 25%;
+
+  @media only screen and (max-width: 800px) {
+    flex: 1 0 45%;
+    justify-content: space-evenly;
+  }
+
+  @media only screen and (max-width: 425px) {
+    flex: 1 0 100%;
+    margin: var(--s-2) 0;
+  }
+}
+
+.dataCardHeadWrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--s-1);
+}
+
+.dataCardIcon {
+  margin-right: var(--s-2);
+}
+
+.arrow {
+  width: var(--s-4);
+  fill: var(--c-positive);
+  margin: auto;
+
+  &.down {
+    transform: rotateX(180deg);
+    fill: var(--c-negative);
+  }
+}
+
+.dataCardContent {
+  flex: 1;
+}
+
+.dataCardTitle,
+.dataCardCount,
+.dataCardLabel {
+  margin: 0;
+}
+
+.dataCardLabel {
+  margin-bottom: var(--s-1);
+}
+
+.dataCardCount {
+  font-size: larger;
+  font-weight: 600;
+}
