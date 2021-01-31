@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "public": "build",
+    "target": "covid-dashboard-gc",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}

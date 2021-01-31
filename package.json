@@ -6,7 +6,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "apply:hosting": "firebase target:apply hosting covid-dashboard-gc covid-dashboard-gc",
+    "deploy": "firebase deploy --only hosting:covid-dashboard-gc"
   },
   "author": "",
   "license": "ISC",

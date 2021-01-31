@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "my-sandbox-ce17d"
+  },
+  "targets": {
+    "my-sandbox-ce17d": {
+      "hosting": {
+        "covid-dashboard-gc": [
+          "covid-dashboard-gc"
+        ]
+      }
+    }
+  }
+}
