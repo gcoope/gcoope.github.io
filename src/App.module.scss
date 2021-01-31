@@ -1,0 +1,17 @@
+.graphNewsWrap {
+  display: flex;
+
+  @media only screen and (max-width: 1440px) {
+    display: block;
+    & > div {
+      margin: var(--s-2) 0;
+    }
+  }
+}
+.graph {
+  flex: 3;
+}
+
+.news {
+  flex: 1;
+}

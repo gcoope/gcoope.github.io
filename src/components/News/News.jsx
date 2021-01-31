@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
+import cx from "classnames";
 import DataContext from "../../context/DataContext";
 import Card from "../Card/Card";
 import styles from "./News.module.scss";
 
-export const News = () => {
+export const News = ({ className }) => {
   const { appData } = useContext(DataContext);
 
   const renderNews = () => {
@@ -23,11 +24,11 @@ export const News = () => {
   };
 
   return (
-    <div className={styles.component}>
-      <Card>
-        <h4 className={styles.title}>COVID News - BBC News</h4>
-        {renderNews()}
-      </Card>
-    </div>
+    <Card className={cx(styles.component, className)}>
+      <h4 className={styles.title}>COVID News - BBC News</h4>
+      {renderNews()}
+    </Card>
   );
 };
+
+export default News;

@@ -1,0 +1,39 @@
+.component {
+  margin: var(--s-2);
+
+  canvas {
+    width: 100%;
+
+    @media only screen and (max-width: 1024px) {
+      margin: auto;
+    }
+  }
+}
+
+.buttonContainer {
+  margin: var(--s-2) 0;
+  display: flex;
+  justify-content: left;
+
+  button {
+    margin: 0 var(--s-1);
+    padding: var(--s-1);
+    color: var(--c-white);
+    border: 2px solid var(--c-blue);
+    background-color: var(--c-blue);
+    font-weight: 600;
+  }
+  button:active,
+  button:focus {
+    outline: 2px solid var(--c-black);
+  }
+
+  @media only screen and (max-width: 500px) {
+    display: block;
+    button {
+      display: block;
+      width: 100%;
+      margin: var(--s-1) 0;
+    }
+  }
+}

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const defaultData = {
   lastUpdated: undefined,
+  allVaccines: [],
+  allCasesAndDeaths: [],
   positive: {
     daily: null,
     total: null,

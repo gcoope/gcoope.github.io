@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { ContextBar } from "./components/ContextBar/ContextBar";
 import DashboardLayout from "./components/DashboardLayout";
 import DataCards from "./components/DataCards";
-import { News } from "./components/News/News";
+import Graph from "./components/Graph";
+import News from "./components/News/News";
 import useAppData from "./hooks/useAppData";
 import { fetchData, fetchNewsData } from "./modules/FetchData";
+import styles from "./App.module.scss";
 
 export const App = () => {
   const { appData, setAppData } = useAppData();
@@ -26,9 +28,11 @@ export const App = () => {
     <DashboardLayout>
       <ContextBar />
       <DataCards />
-      <News />
-      <p>Graph coming soon</p>
-      <p>Map coming soon</p>
+      <div className={styles.graphNewsWrap}>
+        <Graph className={styles.graph} />
+        <News className={styles.news} />
+      </div>
+      {/* <p>Map coming soon</p> */}
     </DashboardLayout>
   );
 };

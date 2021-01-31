@@ -19,7 +19,7 @@ const DataCardContent = ({ title, dayCount, totalCount, negative }) => {
       </div>
       <div className={styles.dataCardContent}>
         <p className={styles.dataCardCount}>{dayCount.toLocaleString()}</p>
-        <p className={styles.dataCardLabel}>Today</p>
+        <p className={styles.dataCardLabel}>Latest daily</p>
         <p className={styles.dataCardCount}>{totalCount.toLocaleString()}</p>
         <p className={styles.dataCardLabel}>Cumulative total</p>
       </div>

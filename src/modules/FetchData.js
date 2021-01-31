@@ -36,6 +36,7 @@ export const fetchData = async () => {
       const todayData = response.data.data[0];
       const prevData = response.data.data[1];
       return {
+        allVaccines: response.data.data,
         vaccine1: {
           daily: todayData.newPeopleVaccinatedFirstDoseByPublishDate,
           total: todayData.cumPeopleVaccinatedFirstDoseByPublishDate,
@@ -65,6 +66,7 @@ export const fetchData = async () => {
 
       return {
         lastUpdated: data.date,
+        allCasesAndDeaths: response.data.data,
         positive: {
           daily: data.newCasesByPublishDate,
           total: data.cumCasesByPublishDate,
